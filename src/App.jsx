@@ -1,0 +1,45 @@
+import QuestionView from "./components/QuestionView";
+import TempComponent from "./components/tempComponent";
+import { questions } from "./data/questions";
+import { quizReducer } from "./state/quizReducer";
+import { useReducer } from "react";
+
+const initialState = {
+  currentQuestion: 0,
+  answers: Array(questions.length).fill(null),
+  submitted: false,
+  timeLeft: 57 * 60,
+};
+
+function App() {
+  const [state, dispatch] = useReducer(
+    (state, action) => quizReducer(state, action, questions.length),
+    initialState,
+  );
+
+  const q = questions[state.currentQuestion];
+
+  const question_view = (
+    <QuestionView
+      q={q}
+      currentQuestion={state.currentQuestion}
+      totalQuestions={state.length}
+      selectedAnswer={state.answers[state.currentQuestion]}
+      onAnswer={() => {}}
+      timeLeft={state.timeLeft}
+      dispatch={dispatch}
+    />
+  );
+
+  const result_view = <></>;
+
+  return (
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50 to-violet-100">
+      <div className="container mx-auto flex min-h-screen items-center justify-center p-4">
+        {state.submitted ? result_view : question_view}
+      </div>
+    </div>
+  );
+}
+
+export default App;
