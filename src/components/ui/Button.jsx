@@ -14,6 +14,7 @@ export const Button = ({ children, className = "", ...props }) => {
         hover:shadow-lg
         hover:shadow-indigo-500/30
         active:scale-[0.98]
+        cursor-pointer
         ${className}
       `}
       {...props}

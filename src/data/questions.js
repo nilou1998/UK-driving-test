@@ -19,7 +19,7 @@ export const questions = [
     id: 2,
     type: "image",
     question: "What does this road sign mean?",
-    image: "/images/no-entry.png",
+    image: "/public/images/no-entry.png",
     options: ["No parking", "No entry", "One-way street", "Dead end"],
     correctAnswer: "No entry",
     explanation:
@@ -71,7 +71,7 @@ export const questions = [
     id: 6,
     type: "image",
     question: "What does this sign mean?",
-    image: "/images/roundabout.png",
+    image: "/images/roundedabout.png",
     options: [
       "No U-turn",
       "Roundabout ahead",

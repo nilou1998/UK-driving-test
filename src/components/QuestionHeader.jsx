@@ -13,12 +13,13 @@ const QuestionHeader = ({ currentQuestion, totalQuestions, timeLeft }) => {
         </span>
       </div>
 
-      <div className="mb-2 h-2 overflow-hidden rounded-full bg-slate-200">
+
+      <div className="h-3 overflow-hidden rounded-full bg-slate-200">
         <div
-          className="h-full rounded-full bg-indigo-600 transition-all duration-300"
           style={{
             width: `${((currentQuestion + 1) / totalQuestions) * 100}%`,
           }}
+          className="h-full rounded-full bg-linear-to-r from-indigo-600 to-violet-600 transition-all duration-500"
         />
       </div>
 

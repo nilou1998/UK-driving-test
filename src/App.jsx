@@ -1,3 +1,4 @@
+import AppBanner from "./components/AppBanner";
 import QuestionView from "./components/QuestionView";
 import TempComponent from "./components/tempComponent";
 import { questions } from "./data/questions";
@@ -19,13 +20,17 @@ function App() {
 
   const q = questions[state.currentQuestion];
 
+  const handleAnswer = (index) => {
+    dispatch({ type: "ANSWER", payload: index });
+  };
+
   const question_view = (
     <QuestionView
       q={q}
       currentQuestion={state.currentQuestion}
-      totalQuestions={state.length}
+      totalQuestions={questions.length}
       selectedAnswer={state.answers[state.currentQuestion]}
-      onAnswer={() => {}}
+      onAnswer={handleAnswer}
       timeLeft={state.timeLeft}
       dispatch={dispatch}
     />
@@ -35,7 +40,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50 to-violet-100">
-      <div className="container mx-auto flex min-h-screen items-center justify-center p-4">
+      {/* <TempComponent state={state} dispatch={dispatch} /> */}
+      <AppBanner />
+      <div className="container mx-auto flex items-center justify-center p-4">
         {state.submitted ? result_view : question_view}
       </div>
     </div>

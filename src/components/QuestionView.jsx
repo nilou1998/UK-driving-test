@@ -1,6 +1,9 @@
 import Card from "./ui/Card";
 import QuestionHeader from "./QuestionHeader";
 import QusetionText from "./QusetionText";
+import AnswerOptions from "./AnswerOptions";
+import MediaDisplay from "./MediaDisplay";
+import NavigationControls from "./NavigationControls";
 
 const QuestionView = ({
   q,
@@ -20,6 +23,20 @@ const QuestionView = ({
       />
 
       <QusetionText text={q.question} />
+
+      {q.type === "image" && <MediaDisplay type={q.type} image={q.image} />}
+
+      <AnswerOptions
+        options={q.options}
+        onSelect={onAnswer}
+        selectedIndex={selectedAnswer}
+      />
+
+      <NavigationControls
+        dispatch={dispatch}
+        currentQuestion={currentQuestion}
+        totalQuestions={totalQuestions}
+      />
     </Card>
   );
 };
