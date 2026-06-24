@@ -1,5 +1,6 @@
 import AppBanner from "./components/AppBanner";
 import QuestionView from "./components/QuestionView";
+import ResultView from "./components/ResultView";
 import TempComponent from "./components/tempComponent";
 import { questions } from "./data/questions";
 import { quizReducer } from "./state/quizReducer";
@@ -26,6 +27,7 @@ function App() {
 
   const question_view = (
     <QuestionView
+    
       q={q}
       currentQuestion={state.currentQuestion}
       totalQuestions={questions.length}
@@ -36,11 +38,18 @@ function App() {
     />
   );
 
-  const result_view = <></>;
+  const score = state.answers.reduce((acc, answer, idx) => {
+    return answer === questions[idx].correctAnswer ? acc + 1 : acc;
+  });
+
+  const result_view = (
+    <>
+      <ResultView score={score} questions={questions} answers={state.answers} />
+    </>
+  );
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50 to-violet-100">
-      {/* <TempComponent state={state} dispatch={dispatch} /> */}
       <AppBanner />
       <div className="container mx-auto flex items-center justify-center p-4">
         {state.submitted ? result_view : question_view}
