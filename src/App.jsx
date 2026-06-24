@@ -1,7 +1,6 @@
 import AppBanner from "./components/AppBanner";
 import QuestionView from "./components/QuestionView";
 import ResultView from "./components/ResultView";
-import TempComponent from "./components/tempComponent";
 import { questions } from "./data/questions";
 import { quizReducer } from "./state/quizReducer";
 import { useReducer } from "react";
